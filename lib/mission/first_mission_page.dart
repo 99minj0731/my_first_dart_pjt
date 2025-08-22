@@ -31,24 +31,7 @@ class FirstMissionPage extends StatelessWidget {
               spacing: 10,
               children: [
                 missionTitle,
-                Row(
-                  spacing: 10,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.network(
-                        height: 100,
-                        width: 100,
-                        imgSrc,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [Text(title), Text(desc)],
-                    ),
-                  ],
-                ),
+                BannerItem(imgSrc: imgSrc, title: title, desc: desc),
                 BannerItem(imgSrc: imgSrc, title: title, desc: desc),
                 TextButton(
                   style: TextButton.styleFrom(
