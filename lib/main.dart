@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pjt/screen/home_page.dart';
+import 'package:pjt/mission/first_mission_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,10 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.grey,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const HomePage(),
+      home: const FirstMissionPage(),
     );
   }
 }
