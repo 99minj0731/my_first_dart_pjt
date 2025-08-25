@@ -108,7 +108,8 @@ class YoutubeHomePage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   children: List.generate(100, (index) {
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const
+                      EdgeInsets.all(8.0),
                       child: YoutubeHorizontalItem(imgUrl: imgUrl),
                     );
                   }),
