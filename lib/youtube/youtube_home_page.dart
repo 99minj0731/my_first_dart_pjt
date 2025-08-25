@@ -35,15 +35,30 @@ class YoutubeHomePage extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {
+            onPressed: () async {
               print('검색 클릭');
               focusNode.unfocus();
 
-              Navigator.push(
+              final resultFromDetail = await Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
                       SearchResultPage(searchTerm: searchTerm),
+                ),
+              );
+              if (resultFromDetail == null) {
+                return;
+              }
+
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('받은 데이터: $resultFromDetail'),
+                  action: SnackBarAction(
+                    label: '확인',
+                    onPressed: () {
+                      // Code to execute.
+                    },
+                  ),
                 ),
               );
             },
