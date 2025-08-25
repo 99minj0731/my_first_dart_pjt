@@ -55,6 +55,7 @@ class YoutubeVerticalItem extends StatelessWidget {
           ),
         ),
         Row(
+          spacing: 10,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(50),
@@ -64,6 +65,19 @@ class YoutubeVerticalItem extends StatelessWidget {
                 height: 50,
                 fit: BoxFit.cover,
               ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "사료 못먹는 고양이",
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                ),
+                Text(
+                  "민뚱TV · 조회수 23만회 · 3년전",
+                  style: TextStyle(color: Colors.grey),
+                ),
+              ],
             ),
           ],
         ),
