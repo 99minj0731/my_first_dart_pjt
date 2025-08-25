@@ -51,28 +51,37 @@ class YoutubeHomePage extends StatelessWidget {
         ],
       ),
       body: SafeArea(
-        child: ListView(
-          scrollDirection: Axis.vertical,
-          children: [
-            SizedBox(
-              height: 250,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: List.generate(100, (index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: YoutubeHorizontalItem(imgUrl: imgUrl),
-                  );
-                }),
+        child: NotificationListener<ScrollNotification>(
+          onNotification: (event) {
+            print(event.metrics.axisDirection);
+            if (focusNode.hasFocus) {
+              focusNode.unfocus();
+            }
+            return true;
+          },
+          child: ListView(
+            scrollDirection: Axis.vertical,
+            children: [
+              SizedBox(
+                height: 250,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: List.generate(100, (index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: YoutubeHorizontalItem(imgUrl: imgUrl),
+                    );
+                  }),
+                ),
               ),
-            ),
-            ...List.generate(100, (index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: YoutubeVerticalItem(height: 300, imgUrl: imgUrl),
-              );
-            }),
-          ],
+              ...List.generate(100, (index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: YoutubeVerticalItem(height: 300, imgUrl: imgUrl),
+                );
+              }),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
