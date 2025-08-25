@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pjt/youtube/search_result_page.dart';
 import 'package:pjt/youtube/youtube_horizontal_item.dart';
 import 'package:pjt/youtube/youtube_vertical_item.dart';
 
@@ -10,6 +11,8 @@ class YoutubeHomePage extends StatelessWidget {
   final String imgUrl =
       'https://plus.unsplash.com/premium_photo-1677181729163-33e6b59d5c8f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
+  String searchTerm = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +21,9 @@ class YoutubeHomePage extends StatelessWidget {
         foregroundColor: Colors.white,
         leading: Icon(Icons.video_call),
         title: TextField(
+          onChanged: (input) {
+            searchTerm = input;
+          },
           focusNode: focusNode,
           cursorColor: Colors.white,
           style: TextStyle(color: Colors.white),
@@ -32,6 +38,14 @@ class YoutubeHomePage extends StatelessWidget {
             onPressed: () {
               print('검색 클릭');
               focusNode.unfocus();
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      SearchResultPage(searchTerm: searchTerm),
+                ),
+              );
             },
             icon: Icon(Icons.search),
           ),
