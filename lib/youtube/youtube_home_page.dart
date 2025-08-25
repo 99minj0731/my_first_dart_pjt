@@ -59,6 +59,17 @@ class YoutubeHomePage extends StatelessWidget {
           IconButton(
             onPressed: () {
               print('더보기 클릭');
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: const Text('더보기를 클릭하셨군요!'),
+                  action: SnackBarAction(
+                    label: '확인',
+                    onPressed: () {
+                      // Code to execute.
+                    },
+                  ),
+                ),
+              );
             },
             icon: Icon(Icons.more_vert),
           ),

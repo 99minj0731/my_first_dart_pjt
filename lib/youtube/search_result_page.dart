@@ -40,6 +40,13 @@ class _SearchResultPageState extends State<SearchResultPage> {
                 },
                 child: Text("카운트 감소"),
               ),
+              SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("닫기"),
+              ),
             ],
           ),
         ),
