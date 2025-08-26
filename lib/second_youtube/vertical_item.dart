@@ -9,7 +9,9 @@ class VerticalItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      spacing: 10,
       children: [
+        // Thumbnail section
         SizedBox(
           height: 200,
           child: Stack(
@@ -44,7 +46,23 @@ class VerticalItem extends StatelessWidget {
               ),
             ],
           ),
-        )
+        ),
+        // detail section
+        Row(
+          spacing: 10,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child:Image.network(width: 50, height: 50 ,imgUrl, fit: BoxFit.cover,),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+              Text("제목입니다.", style: TextStyle(fontWeight: FontWeight.bold),),
+              Text("민뚱TV · 조회수 23만회 · 3년전", style: TextStyle(color: Colors.grey),)
+            ],)
+          ],
+        ),
       ],
     );
   }
