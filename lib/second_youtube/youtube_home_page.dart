@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pjt/second_youtube/horizon_item.dart';
+import 'package:pjt/second_youtube/vertical_item.dart';
 
 class youtubeHomePage extends StatelessWidget {
 
@@ -60,9 +61,7 @@ class youtubeHomePage extends StatelessWidget {
             ...List.generate(10, (index){
               return Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 150, color: Colors.blueAccent,
-                ),
+                child: VerticalItem(imgUrl: imgUrl, height:300),
               );
             })
           ],
