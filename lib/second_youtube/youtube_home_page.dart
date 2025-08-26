@@ -41,32 +41,44 @@ class youtubeHomePage extends StatelessWidget {
       ),
       body: Container(
         color: Colors.white,
-        child: SafeArea(child: ListView(
-          scrollDirection: Axis.vertical, // 세로로 배치
-          children: [
-            // short section
-            SizedBox(
-              height: 200,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: List.generate(10, (index){
+        child: SafeArea(child:
+        // 스크롤을 내리면 포커스를 없애자.
+        NotificationListener<ScrollNotification>(
+            onNotification: (event) {
+              print(event.metrics.axisDirection);
+              if (focusNode.hasFocus) {
+                focusNode.unfocus();
+              }
+              return true;
+            },
+            child:  ListView(
+              scrollDirection: Axis.vertical, // 세로로 배치
+              children: [
+                // short section
+                SizedBox(
+                  height: 200,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: List.generate(10, (index){
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: HorizonItem(imgUrl: imgUrl),
+                      );
+                    }),
+                  ),
+                ),
+                // main section
+                ...List.generate(10, (index){
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: HorizonItem(imgUrl: imgUrl),
+                    child: VerticalItem(imgUrl: imgUrl, height:300),
                   );
-                }),
-              ),
+                })
+              ],
             ),
-            // main section
-            ...List.generate(10, (index){
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: VerticalItem(imgUrl: imgUrl, height:300),
-              );
-            })
-          ],
-        )),
-      ),
+          ),
+          ),
+        ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
         items: const <BottomNavigationBarItem>[
