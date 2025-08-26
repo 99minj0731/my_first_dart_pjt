@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pjt/second_youtube/horizon_item.dart';
+import 'package:pjt/second_youtube/serach_result.dart';
 import 'package:pjt/second_youtube/vertical_item.dart';
 
 class youtubeHomePage extends StatelessWidget {
@@ -10,6 +11,7 @@ class youtubeHomePage extends StatelessWidget {
   final focusNode = FocusNode();
 
   final String imgUrl = 'https://plus.unsplash.com/premium_photo-1677181729163-33e6b59d5c8f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+  String searchTerm = '';
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +22,9 @@ class youtubeHomePage extends StatelessWidget {
         foregroundColor: Colors.black87,
         leading: Icon(Icons.play_circle, color: Colors.red),
         title: TextField(
+          onChanged: (input){
+            searchTerm = input;
+          },
           cursorColor: Colors.black87,
           style: TextStyle(color: Colors.black87),
           decoration: InputDecoration(
@@ -32,6 +37,15 @@ class youtubeHomePage extends StatelessWidget {
         actions: [
           IconButton(onPressed: (){
             focusNode.unfocus(); // 포커스 빼기
+            // 검색 페이지로 이동하겠다.
+            // 플러터의 화면 전환은 스택 구조로 동작한다.
+            // push : 새 화면을 위호 쌓음, pop: 위에 쌓인 화면을 닫고 이전 화면으로 돌가간다.
+            // context : 현재 위젯이 그려 지고 있는 위치 정보를 담고 있는 객체.
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) =>
+                SearchResultPage(searchTerm: searchTerm)
+            ),);
           }, icon: Icon(Icons.search),),
           IconButton(onPressed: (){
             focusNode.requestFocus(); // 포커스 넣기
