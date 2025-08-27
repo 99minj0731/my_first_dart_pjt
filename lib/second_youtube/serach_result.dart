@@ -41,7 +41,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
                   SizedBox(height: 100,),
                   ElevatedButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pop(context, count);
                       },
                       child: Text("닫기")),
                 ],

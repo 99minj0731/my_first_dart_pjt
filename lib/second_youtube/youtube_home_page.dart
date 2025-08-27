@@ -35,18 +35,28 @@ class youtubeHomePage extends StatelessWidget {
           focusNode: focusNode, // focusnode를 연결함으로써 제어 가능!
         ),
         actions: [
-          IconButton(onPressed: (){
+          IconButton(onPressed: () async {
             focusNode.unfocus(); // 포커스 빼기
             // 검색 페이지로 이동하겠다.
             // 플러터의 화면 전환은 스택 구조로 동작한다.
             // push : 새 화면을 위호 쌓음, pop: 위에 쌓인 화면을 닫고 이전 화면으로 돌가간다.
             // context : 현재 위젯이 그려 지고 있는 위치 정보를 담고 있는 객체.
-            Navigator.push(
+            final resultFromDetail = await Navigator.push(
               context,
               MaterialPageRoute(builder: (context) =>
                 SearchResultPage(searchTerm: searchTerm)
             ),);
-          }, icon: Icon(Icons.search),),
+            // 카운트 페이지에서 넘겨받은 정보가 있다면 스낵바 띄우기
+            if (resultFromDetail == null) {return ;}
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text("받은 데이터 값 : $resultFromDetail"),
+                action: SnackBarAction(label: "확인", onPressed: (){}),
+              ));
+
+
+          },
+            icon: Icon(Icons.search),),
           IconButton(onPressed: (){
             focusNode.requestFocus(); // 포커스 넣기
           }, icon: Icon(Icons.mic)),
