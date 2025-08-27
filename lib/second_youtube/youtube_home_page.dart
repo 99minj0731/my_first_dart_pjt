@@ -50,7 +50,17 @@ class youtubeHomePage extends StatelessWidget {
           IconButton(onPressed: (){
             focusNode.requestFocus(); // 포커스 넣기
           }, icon: Icon(Icons.mic)),
-          IconButton(onPressed: (){}, icon: Icon(Icons.more_vert)),
+          IconButton(
+            onPressed: (){
+              // 지금 화면의 Scaffold를 불러와서 여기에 무언가를 띄우겠다.
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("더보기를 클릭하셨군요!"),
+                  action: SnackBarAction(label: "넹!", onPressed: (){}),
+                )
+              );
+            },
+            icon: Icon(Icons.more_vert)),
         ],
       ),
       body: Container(
