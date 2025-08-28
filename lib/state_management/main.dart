@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:pjt/state_management/getx/get_X_counter_app..dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pjt/state_management/riverpod/riverpod_counter_app..dart';
 
 void main() {
   // Sate
@@ -20,5 +20,8 @@ void main() {
   // );
 
   // GetX
-  runApp(GetMaterialApp(home: GetXCounterApp()));
+  // runApp(GetMaterialApp(home: GetXCounterApp()));
+
+  //riverpod
+  runApp(const ProviderScope(child: RiverpodCounterApp()));
 }
