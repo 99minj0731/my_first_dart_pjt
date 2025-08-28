@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pjt/state_management/riverpod/riverpod_counter_app..dart';
+import 'package:pjt/state_management/bloc/bloc_counter_app..dart';
 
 void main() {
   // Sate
@@ -23,5 +22,8 @@ void main() {
   // runApp(GetMaterialApp(home: GetXCounterApp()));
 
   //riverpod
-  runApp(const ProviderScope(child: RiverpodCounterApp()));
+  // runApp(const ProviderScope(child: RiverpodCounterApp()));
+
+  //Bloc
+  runApp(const BlocCounterApp());
 }
